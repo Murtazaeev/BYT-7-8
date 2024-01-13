@@ -25,51 +25,60 @@ public class MoneyTest {
 
 	@Test
 	public void testGetAmount() {
-		fail("Write test case here");
+		Assert.assertEquals("Test get amount regular", new Integer(1000), EUR10.getAmount());
+		Assert.assertEquals("Test get amount zero", new Integer(0), EUR0.getAmount());
 	}
 
 	@Test
 	public void testGetCurrency() {
-		fail("Write test case here");
+		Assert.assertEquals("test get currency", EUR, EUR10.getCurrency());
 	}
 
 	@Test
 	public void testToString() {
-		fail("Write test case here");
+		Assert.assertEquals("test toString zero", "0 EUR", EUR0.toString());
+		Assert.assertEquals("test toString", "10 EUR", EUR10.toString());
 	}
 
 	@Test
 	public void testGlobalValue() {
-		fail("Write test case here");
+		Assert.assertEquals("test UniversalValue SEK", new Integer(1500), SEK100.universalValue());
+		Assert.assertEquals("test UniversalValue EUR", new Integer(3000), EUR20.universalValue());
 	}
 
 	@Test
 	public void testEqualsMoney() {
-		fail("Write test case here");
+		Assert.assertEquals("test equals true", true, EUR10.equals(SEK100));
+		Assert.assertEquals("test equals false", false, EUR20.equals(SEK100));
 	}
 
 	@Test
 	public void testAdd() {
-		fail("Write test case here");
+		Assert.assertEquals("test add SEK + SEK", "200 SEK", SEK100.add(SEK100).toString());
+		Assert.assertEquals("test add SEK + EUR", "200 SEK", SEK100.add(EUR10).toString());
 	}
 
 	@Test
 	public void testSub() {
-		fail("Write test case here");
+		Assert.assertEquals("test sub negative", "-100 SEK", SEK100.sub(SEK200).toString());
+		Assert.assertEquals("test sub zero", "0 SEK", SEK100.sub(SEK100).toString());
 	}
 
 	@Test
 	public void testIsZero() {
-		fail("Write test case here");
+		Assert.assertEquals("test is zero false", false, SEK100.isZero());
+		Assert.assertEquals("test is zero true", true, SEK0.isZero());
 	}
 
 	@Test
 	public void testNegate() {
-		fail("Write test case here");
+		Assert.assertEquals("test negate", "-100 SEK", SEK100.negate().toString());
 	}
 
 	@Test
 	public void testCompareTo() {
-		fail("Write test case here");
+		Assert.assertEquals("test compare eq", 0, SEK100.compareTo(SEK100));
+		Assert.assertEquals("test compare less", -1, SEK100.compareTo(EUR20));
+		Assert.assertEquals("test comapre more", +1, SEK200.compareTo(SEK0));
 	}
 }
